@@ -65,3 +65,11 @@ public class Spawner : MonoBehaviour
         return false;
     }
 }
+
+// Different cargo types
+public enum CargoType
+{
+    None,
+    Blue,
+    Red
+}

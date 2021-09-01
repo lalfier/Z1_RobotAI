@@ -6,8 +6,12 @@ public class RobotBrain : MonoBehaviour
     public float movementSpeed = 5f;
     [Tooltip("Robot rigid body component")]
     public Rigidbody2D rigidBody;
-    [Tooltip("Robot model/graphic child object")]
+    [Tooltip("Transform for robot model/graphic child object")]
     public Transform robotModel;
+    [Tooltip("Transform for robot hand child object")]
+    public Transform robotHand;
+    [Tooltip("Transform for robot sensor child object")]
+    public Transform robotSensor;
     [Tooltip("Robot sensor range for scanning environment")]
     public float sensorRange = 20f;
     [Tooltip("Box layer mask for sensor to pickup")]
@@ -17,10 +21,12 @@ public class RobotBrain : MonoBehaviour
 
     [Header("------INSPECTOR INFO ONLY------")]
     [SerializeField]
-    private string currentStateName;    // Info display in editor only
+    private string currentStateName;    // State info display in editor only
+    [SerializeField]
+    private string currentTargetName;    // Target info display in editor only
     private IRobotState currentState;   // Current state that robot is in
 
-    public Transform CurrentTarget { get; set; }    // Get and set current target for robot
+    public Transform CurrentTarget { get; set; }    // Get and set current target for robot    
 
     #region FSM States
     // States that FSM (RobotBrain) can use and transition to:
@@ -49,12 +55,24 @@ public class RobotBrain : MonoBehaviour
     {
         // Set new state as current
         currentState = newState;
-        // If true execute DoState function on current state
+        // If true execute DoState function on new state and set return value as current state
         if (doState)
         {
             currentState = currentState.DoState(this);
         }
         currentStateName = currentState.ToString(); // Display state name in editor for info
+    }
+
+    /// <summary>
+    /// Set target name for display info in editor
+    /// </summary>
+    public void SetCurrentTargetName()
+    {
+        currentTargetName = "";
+        if (CurrentTarget != null)
+        {
+            currentTargetName = CurrentTarget.name;
+        }
     }
 
     /// <summary>

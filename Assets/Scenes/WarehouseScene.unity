@@ -832,6 +832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1008949503}
   - component: {fileID: 1008949504}
+  - component: {fileID: 1008949502}
   m_Layer: 7
   m_Name: ContainerR
   m_TagString: Untagged
@@ -839,6 +840,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1008949502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008949501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c49bbb42365600409e8ba3525c06397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  containerCargoType: 2
 --- !u!4 &1008949503
 Transform:
   m_ObjectHideFlags: 0
@@ -1299,6 +1313,8 @@ MonoBehaviour:
   movementSpeed: 5
   rigidBody: {fileID: 1722213497}
   robotModel: {fileID: 1449869017}
+  robotHand: {fileID: 494955571}
+  robotSensor: {fileID: 275991859}
   sensorRange: 20
   boxLayerMask:
     serializedVersion: 2
@@ -1307,6 +1323,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   currentStateName: 
+  currentTargetName: 
 --- !u!1 &1999938082
 GameObject:
   m_ObjectHideFlags: 0
@@ -1399,6 +1416,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2128402358}
   - component: {fileID: 2128402359}
+  - component: {fileID: 2128402357}
   m_Layer: 7
   m_Name: ContainerB
   m_TagString: Untagged
@@ -1406,6 +1424,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2128402357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128402356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c49bbb42365600409e8ba3525c06397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  containerCargoType: 1
 --- !u!4 &2128402358
 Transform:
   m_ObjectHideFlags: 0
