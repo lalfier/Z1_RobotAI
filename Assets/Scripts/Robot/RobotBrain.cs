@@ -3,9 +3,9 @@ using UnityEngine;
 public class RobotBrain : MonoBehaviour
 {
     [Tooltip("Robot moving speed")]
-    public float movementSpeed = 5f;
+    public float movementSpeed = 2.5f;
     [Tooltip("Robot rigid body component")]
-    public Rigidbody2D rigidBody;
+    public Rigidbody2D rigidBody2D;
     [Tooltip("Transform for robot model/graphic child object")]
     public Transform robotModel;
     [Tooltip("Transform for robot hand child object")]
@@ -26,7 +26,8 @@ public class RobotBrain : MonoBehaviour
     private string currentTargetName;    // Target info display in editor only
     private IRobotState currentState;   // Current state that robot is in
 
-    public Transform CurrentTarget { get; set; }    // Get and set current target for robot    
+    public Transform CurrentTarget { get; set; }    // Get and set current target for robot
+    public float DistanceToStop { get; private set; }   // Get and set robot stoping distance in front of object
 
     #region FSM States
     // States that FSM (RobotBrain) can use and transition to:
@@ -37,6 +38,9 @@ public class RobotBrain : MonoBehaviour
 
     private void Awake()
     {
+        // Calculate distance to stop
+        DistanceToStop = GetComponent<BoxCollider2D>().size.x / 2;
+
         // Set starting state
         SetState(searchTargetState, false);
     }
@@ -78,12 +82,13 @@ public class RobotBrain : MonoBehaviour
     /// <summary>
     /// Turn the character by flipping the x scale on transform.
     /// </summary>
-    public void FlipCharacterDirection()
+    /// <param name="direction">Direction model/sprite is facing (1 or -1).</param>
+    public void FlipCharacterDirection(int direction)
     {
         // Record the current scale
         Vector3 scale = robotModel.localScale;
-        // Set the X scale to be the original times -1
-        scale.x *= -1;
+        // Set the X scale to be 1 or -1
+        scale.x = direction;
         //Apply the new scale
         robotModel.localScale = scale;
     }

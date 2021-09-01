@@ -39,7 +39,7 @@ public class SearchTargetState : IRobotState
     {
         // Search for box
         RaycastHit2D hit = Physics2D.Raycast(robot.robotSensor.position, robot.robotSensor.right, robot.sensorRange, robot.boxLayerMask);
-        Debug.DrawRay(robot.robotSensor.position, robot.robotSensor.right * robot.sensorRange, Color.green, 0.5f);
+        Debug.DrawRay(robot.robotSensor.position, robot.robotSensor.right * robot.sensorRange, Color.green, 0.2f);
 
         // Check if we hit the box
         if(hit.collider != null)
@@ -50,7 +50,7 @@ public class SearchTargetState : IRobotState
         {
             // Search for box in other direction
             hit = Physics2D.Raycast(robot.robotSensor.position, -robot.robotSensor.right, robot.sensorRange, robot.boxLayerMask);
-            Debug.DrawRay(robot.robotSensor.position, -robot.robotSensor.right * robot.sensorRange, Color.green, 0.5f);
+            Debug.DrawRay(robot.robotSensor.position, -robot.robotSensor.right * robot.sensorRange, Color.green, 0.2f);
 
             // Check if we hit the box
             if (hit.collider != null)
@@ -68,7 +68,7 @@ public class SearchTargetState : IRobotState
     {
         // Search for appropriate container
         RaycastHit2D hit = Physics2D.Raycast(robot.robotSensor.position, robot.robotSensor.right, robot.sensorRange, robot.containerLayerMask);
-        Debug.DrawRay(robot.robotSensor.position, robot.robotSensor.right * robot.sensorRange, Color.green, 0.5f);
+        Debug.DrawRay(robot.robotSensor.position, robot.robotSensor.right * robot.sensorRange, Color.green, 0.2f);
 
         // Check if we hit the appropriate container
         if (hit.collider != null && (hit.collider.GetComponent<Container>().containerCargoType == robot.robotHand.GetComponentInChildren<Box>().boxCargoType))
@@ -79,7 +79,7 @@ public class SearchTargetState : IRobotState
         {
             // Search for appropriate container in other direction
             hit = Physics2D.Raycast(robot.robotSensor.position, -robot.robotSensor.right, robot.sensorRange, robot.containerLayerMask);
-            Debug.DrawRay(robot.robotSensor.position, -robot.robotSensor.right * robot.sensorRange, Color.green, 0.5f);
+            Debug.DrawRay(robot.robotSensor.position, -robot.robotSensor.right * robot.sensorRange, Color.green, 0.2f);
 
             // Check if we hit the appropriate container
             if (hit.collider != null && (hit.collider.GetComponent<Container>().containerCargoType == robot.robotHand.GetComponentInChildren<Box>().boxCargoType))

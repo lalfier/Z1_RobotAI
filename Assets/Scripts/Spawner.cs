@@ -52,7 +52,7 @@ public class Spawner : MonoBehaviour
         float x = Random.Range(spawningCollider.bounds.min.x, spawningCollider.bounds.max.x);
 
         // y and z value can be same as Spawner game object
-        return new Vector3(x, transform.position.y, transform.position.y);
+        return new Vector3(x, transform.position.y, transform.position.z);
     }
 
     private bool ShouldSpawn()
