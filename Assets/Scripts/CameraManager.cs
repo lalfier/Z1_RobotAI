@@ -10,10 +10,12 @@ public class CameraManager : MonoBehaviour
     private void Awake()
     {
         Camera camera = GetComponent<Camera>();
+
+        // Set cam size for smaller aspects
         if(camera.aspect <= defaultAspect)
         {
             // On application start set bigger camera size for smaller aspect. Whole scene must be visible.
-            camera.orthographicSize = 1 / camera.aspect * defaultAspect * defaultSize;
+            camera.orthographicSize = (1 / camera.aspect) * defaultAspect * defaultSize;
         }
     }
 }

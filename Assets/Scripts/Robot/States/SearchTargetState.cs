@@ -71,7 +71,7 @@ public class SearchTargetState : IRobotState
         Debug.DrawRay(robot.robotSensor.position, robot.robotSensor.right * robot.sensorRange, Color.green, 0.2f);
 
         // Check if we hit the appropriate container
-        if (hit.collider != null && (hit.collider.GetComponent<Container>().containerCargoType == robot.robotHand.GetComponentInChildren<Box>().boxCargoType))
+        if (hit.collider != null && (hit.collider.GetComponent<CargoObject>().cargoType == robot.robotHand.GetComponentInChildren<CargoObject>().cargoType))
         {
             return hit.transform;
         }
@@ -82,7 +82,7 @@ public class SearchTargetState : IRobotState
             Debug.DrawRay(robot.robotSensor.position, -robot.robotSensor.right * robot.sensorRange, Color.green, 0.2f);
 
             // Check if we hit the appropriate container
-            if (hit.collider != null && (hit.collider.GetComponent<Container>().containerCargoType == robot.robotHand.GetComponentInChildren<Box>().boxCargoType))
+            if (hit.collider != null && (hit.collider.GetComponent<CargoObject>().cargoType == robot.robotHand.GetComponentInChildren<CargoObject>().cargoType))
             {
                 return hit.transform;
             }

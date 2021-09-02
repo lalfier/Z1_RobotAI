@@ -11,7 +11,7 @@ public class Spawner : MonoBehaviour
     [Tooltip("Parent to store boxes in")]
     public Transform boxesParent;
 
-    private float nextSpawnTime = 0;
+    private float nextSpawnTime = 0;    // Time for next spawn
     private BoxCollider2D spawningCollider; // Area that spawns boxes on random point inside collider.
 
     private void Awake()
@@ -57,19 +57,11 @@ public class Spawner : MonoBehaviour
 
     private bool ShouldSpawn()
     {
-        // Can spawn new box only when time is up and there is less than max boxes on scene
+        // Can spawn new box only when time is up and there is less than max boxes under parent
         if(Time.time >= nextSpawnTime && boxesParent.childCount < maxBoxesOnScene)
         {
             return true;
         }
         return false;
     }
-}
-
-// Different cargo types
-public enum CargoType
-{
-    None,
-    Blue,
-    Red
 }

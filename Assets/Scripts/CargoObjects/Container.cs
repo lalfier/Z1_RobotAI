@@ -1,12 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Container : MonoBehaviour
+public class Container : CargoObject
 {
     [Tooltip("Text object to display number of boxes in container")]
     public Text boxesNumberDisplay;
-    [Tooltip("Cargo type for container")]
-    public CargoType containerCargoType;
 
     private int numberOfBoxes = 0;  // Number of deposited boxes
 
@@ -15,10 +13,12 @@ public class Container : MonoBehaviour
         UpdateUIDisplay();
     }
 
-    /// <summary>
-    /// Increment number of boxes by 1 and update UI text.
-    /// </summary>
-    public void IncrementNumberOfBoxes()
+    public override void OnPickup(Transform handTransform)
+    {
+        // For now nothing, but in future robot can take boxes from container
+    }
+
+    public override void OnDeposition()
     {
         // Increase number of boxes and update UI display
         numberOfBoxes++;

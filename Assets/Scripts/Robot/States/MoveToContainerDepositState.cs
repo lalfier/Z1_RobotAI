@@ -26,7 +26,7 @@ public class MoveToContainerDepositState : IRobotState
         // Check if we need to flip model/sprite direction
         int dir = Mathf.RoundToInt(Vector3.Dot(direction.normalized, robot.robotModel.right));
         robot.FlipCharacterDirection(dir);
-        // Move rigid body
+        // Move robot rigid body
         robot.rigidBody2D.velocity = direction.normalized * robot.movementSpeed;
     }
 
@@ -38,10 +38,10 @@ public class MoveToContainerDepositState : IRobotState
             // Stop the robot
             robot.rigidBody2D.velocity = Vector3.zero;
 
-            // Deposti the box
-            Object.Destroy(robot.robotHand.GetChild(0).gameObject);
-            // Increment container counter
-            robot.CurrentTarget.GetComponent<Container>().IncrementNumberOfBoxes();
+            // Deposit the box
+            robot.robotHand.GetComponentInChildren<CargoObject>().OnDeposition();
+            // Deposit in container
+            robot.CurrentTarget.GetComponent<CargoObject>().OnDeposition();
 
             // Reset current target
             robot.CurrentTarget = null;

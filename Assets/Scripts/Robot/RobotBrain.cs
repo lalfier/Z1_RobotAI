@@ -24,10 +24,11 @@ public class RobotBrain : MonoBehaviour
     private string currentStateName;    // State info display in editor only
     [SerializeField]
     private string currentTargetName;    // Target info display in editor only
+
     private IRobotState currentState;   // Current state that robot is in
 
     public Transform CurrentTarget { get; set; }    // Get and set current target for robot
-    public float DistanceToStop { get; private set; }   // Get and set robot stoping distance in front of object
+    public float DistanceToStop { get; private set; }   // Get and private set robot stoping distance in front of object
 
     #region FSM States
     // States that FSM (RobotBrain) can use and transition to:
@@ -39,7 +40,7 @@ public class RobotBrain : MonoBehaviour
     private void Awake()
     {
         // Calculate distance to stop
-        DistanceToStop = GetComponent<BoxCollider2D>().size.x / 2;
+        DistanceToStop = GetComponent<BoxCollider2D>().size.x / 2;  // Half robot collider width
 
         // Set starting state
         SetState(searchTargetState, false);
