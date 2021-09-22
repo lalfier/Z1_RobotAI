@@ -1086,6 +1086,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1042591930}
   - component: {fileID: 1042591929}
+  - component: {fileID: 1042591932}
   - component: {fileID: 1042591931}
   m_Layer: 0
   m_Name: Spawner
@@ -1148,10 +1149,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnDelay: 2
   maxBoxesOnScene: 10
-  boxesToSpawn:
-  - {fileID: 3252684494266974930, guid: 417538d4970b5a946a0bf5b251765ccf, type: 3}
-  - {fileID: 4785714765056073548, guid: 89c7e39133f3df149b7c3c4249f796f2, type: 3}
+--- !u!114 &1042591932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042591928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e500a211ae37ba459dd77900ca6b0c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   boxesParent: {fileID: 914131298}
+  itemsToPool:
+  - objectToPool: {fileID: 3252684494266974930, guid: 417538d4970b5a946a0bf5b251765ccf, type: 3}
+    amountToPool: 5
+    shouldExpand: 1
+  - objectToPool: {fileID: 4785714765056073548, guid: 89c7e39133f3df149b7c3c4249f796f2, type: 3}
+    amountToPool: 5
+    shouldExpand: 1
 --- !u!1 &1136761666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,8 +1587,6 @@ MonoBehaviour:
   containerLayerMask:
     serializedVersion: 2
     m_Bits: 128
-  currentStateName: 
-  currentTargetName: 
 --- !u!1 &1724913444
 GameObject:
   m_ObjectHideFlags: 0

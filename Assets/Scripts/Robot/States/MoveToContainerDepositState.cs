@@ -45,7 +45,6 @@ public class MoveToContainerDepositState : IRobotState
 
             // Reset current target
             robot.CurrentTarget = null;
-            robot.SetCurrentTargetName();
 
             return true;
         }

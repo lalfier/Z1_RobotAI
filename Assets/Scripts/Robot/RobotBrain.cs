@@ -19,12 +19,6 @@ public class RobotBrain : MonoBehaviour
     [Tooltip("Container layer mask for sensor to pickup")]
     public LayerMask containerLayerMask;
 
-    [Header("------INSPECTOR INFO ONLY------")]
-    [SerializeField]
-    private string currentStateName;    // State info display in editor only
-    [SerializeField]
-    private string currentTargetName;    // Target info display in editor only
-
     private IRobotState currentState;   // Current state that robot is in
 
     public Transform CurrentTarget { get; set; }    // Get and set current target for robot
@@ -65,19 +59,7 @@ public class RobotBrain : MonoBehaviour
         {
             currentState = currentState.DoState(this);
         }
-        currentStateName = currentState.ToString(); // Display state name in editor for info
-    }
-
-    /// <summary>
-    /// Set target name for display info in editor
-    /// </summary>
-    public void SetCurrentTargetName()
-    {
-        currentTargetName = "";
-        if (CurrentTarget != null)
-        {
-            currentTargetName = CurrentTarget.name;
-        }
+        //Debug.Log("State Name: " + currentState.ToString()); // Display state name in editor for info
     }
 
     /// <summary>

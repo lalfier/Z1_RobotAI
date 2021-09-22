@@ -43,7 +43,6 @@ public class MoveToBoxPickupState : IRobotState
 
             // Reset current target
             robot.CurrentTarget = null;
-            robot.SetCurrentTargetName();
 
             return true;
         }

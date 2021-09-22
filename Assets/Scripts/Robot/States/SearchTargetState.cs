@@ -12,13 +12,13 @@ public class SearchTargetState : IRobotState
         else
         {
             robot.CurrentTarget = SearchContainerTarget(robot);
-        }
-
-        robot.SetCurrentTargetName();   // Display target name in editor for info
+        }        
 
         // Return next state
         if (robot.CurrentTarget != null)    // Is there a target?
         {
+            //Debug.Log("Target Name: " + robot.CurrentTarget.name);  // Display target name in editor for info
+
             // Is robot empty or carrying the box?
             if (robot.robotHand.childCount <= 0)
             {
